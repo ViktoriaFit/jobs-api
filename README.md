@@ -1,33 +1,43 @@
 # Jobs API
 
-REST API built with FastAPI that serves job vacancies from a SQLite database.
+REST API built with FastAPI that serves job vacancies from a PostgreSQL database.
 
 ## Features
 
-- GET `/` — health check endpoint
-- GET `/jobs` — returns all job vacancies as JSON
+- GET `/` â€” health check endpoint
+- GET `/jobs` â€” returns all job vacancies as JSON
 - Auto-generated documentation at `/docs` (Swagger UI)
 
 ## Technologies
 
 - **Python 3.12**
-- **FastAPI** — modern web framework
-- **Uvicorn** — ASGI server
-- **SQLite** — database
+- **FastAPI** â€” modern web framework
+- **PostgreSQL** â€” cloud database (Neon)
+- **psycopg2** â€” PostgreSQL adapter for Python
+- **python-dotenv** â€” environment variables management
+- **Uvicorn** â€” ASGI server
+
+## Security
+
+Database credentials are stored in environment variables (`.env` file)
+and are NOT included in the repository. See `.gitignore`.
 
 ## How to run
 
 1. Install dependencies:
-   pip install fastapi uvicorn
+   pip install fastapi uvicorn psycopg2-binary python-dotenv
 
-2. Run the server:
+2. Create a `.env` file with your database connection string:
+   DATABASE_URL=postgresql://user:password@host:5432/dbname
+
+3. Run the server:
    uvicorn api_jobs:app --reload
 
-3. Open in browser:
-   - http://127.0.0.1:8000/jobs
-   - http://127.0.0.1:8000/docs
+4. Open in browser:
+   - http://127.0.0.1:8000/jobs â€” list of jobs
+   - http://127.0.0.1:8000/docs â€” interactive documentation
 
 ## Author
 
-Viktoria Zykova — Junior Python / AI Developer
+Viktoria Zykova â€” Junior Python / AI Developer
 GitHub: https://github.com/ViktoriaFit

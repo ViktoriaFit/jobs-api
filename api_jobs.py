@@ -1,7 +1,10 @@
 from fastapi import FastAPI
-import sqlite3
+import psycopg2
+import os
 
 app = FastAPI()
+
+PG_CONN = os.environ.get("DATABASE_URL")
 
 @app.get("/")
 def home():
@@ -9,9 +12,9 @@ def home():
 
 @app.get("/jobs")
 def get_jobs():
-    conn = sqlite3.connect("djinni.db")
+    conn = psycopg2.connect(PG_CONN)
     cursor = conn.cursor()
-    cursor.execute("SELECT id, title, url FROM jobs")
+    cursor.execute("SELECT id, title, url FROM jobs ORDER BY id")
     rows = cursor.fetchall()
     conn.close()
     

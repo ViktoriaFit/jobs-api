@@ -1,43 +1,23 @@
-# Jobs API
+﻿# Jobs API (FastAPI + PostgreSQL)
 
-REST API built with FastAPI that serves job vacancies from a PostgreSQL database.
+## Overview
+A REST API built with FastAPI that serves job vacancies stored in a PostgreSQL database. This project demonstrates backend development skills, database integration, environment variable management, and containerization with Docker.
 
 ## Features
+- **REST API:** Clean endpoints to fetch job vacancies.
+- **Swagger Documentation:** Auto-generated interactive API docs at `/docs`.
+- **Cloud Database:** Connected to Neon PostgreSQL.
+- **Security:** Credentials stored securely using environment variables (`.env`).
+- **Dockerized:** Fully containerized with `Dockerfile` and `docker-compose`.
 
-- GET `/` — health check endpoint
-- GET `/jobs` — returns all job vacancies as JSON
-- Auto-generated documentation at `/docs` (Swagger UI)
+## Tech Stack
+- **Backend:** Python, FastAPI, Uvicorn
+- **Database:** PostgreSQL (Neon), psycopg2
+- **Tools:** Docker, python-dotenv, Git
+- **Deployment:** Render (or any Docker-ready cloud)
 
-## Technologies
-
-- **Python 3.12**
-- **FastAPI** — modern web framework
-- **PostgreSQL** — cloud database (Neon)
-- **psycopg2** — PostgreSQL adapter for Python
-- **python-dotenv** — environment variables management
-- **Uvicorn** — ASGI server
-
-## Security
-
-Database credentials are stored in environment variables (`.env` file)
-and are NOT included in the repository. See `.gitignore`.
-
-## How to run
-
-1. Install dependencies:
-   pip install fastapi uvicorn psycopg2-binary python-dotenv
-
-2. Create a `.env` file with your database connection string:
-   DATABASE_URL=postgresql://user:password@host:5432/dbname
-
-3. Run the server:
-   uvicorn api_jobs:app --reload
-
-4. Open in browser:
-   - http://127.0.0.1:8000/jobs — list of jobs
-   - http://127.0.0.1:8000/docs — interactive documentation
+## API Documentation
+Once running, open `http://127.0.0.1:8000/docs` to see the Swagger UI.
 
 ## Author
-
-Viktoria Zykova — Junior Python / AI Developer
-GitHub: https://github.com/ViktoriaFit
+**Viktoria Zykova** – [GitHub](https://github.com/ViktoriaFit)
